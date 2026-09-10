@@ -1,0 +1,4 @@
+# Generic TigerVNC mapping example.
+# Replace adminuser and the display number for your environment.
+
+:6=adminuser
