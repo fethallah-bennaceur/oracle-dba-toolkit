@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Files - Active Privileged Context
+Exec=/usr/local/bin/open-files-current
+Icon=system-file-manager
+Terminal=true
+DBusActivatable=false
+StartupNotify=true
