@@ -1,0 +1,15 @@
+flowchart TD
+    A[Admin workstation] -->|Nominative VNC session| B[GNOME session]
+    B --> C[adminenv]
+    C --> D[root]
+    C --> E[oracle]
+    C --> F[grid]
+    C --> G[adminenv.current]
+    C --> H[adminenv.lock]
+    G --> I[Files launcher]
+    G --> J[Editor launcher]
+    I --> K[sudo + X11 + D-Bus]
+    J --> K
+    K --> D
+    K --> E
+    K --> F

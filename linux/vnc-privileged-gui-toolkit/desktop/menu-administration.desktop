@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Privileged Environment Menu
+Exec=/usr/bin/gnome-terminal --title=Privileged-Environment -- /usr/local/bin/adminenv
+Icon=utilities-terminal
+Terminal=false
+DBusActivatable=false
+StartupNotify=true

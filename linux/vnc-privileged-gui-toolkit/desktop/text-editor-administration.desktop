@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Text Editor - Active Privileged Context
+Exec=/usr/local/bin/open-editor-current %F
+Icon=accessories-text-editor
+Terminal=true
+DBusActivatable=false
+StartupNotify=true
+MimeType=text/plain;

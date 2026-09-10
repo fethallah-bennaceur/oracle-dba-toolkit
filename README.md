@@ -40,7 +40,7 @@ Ce dépôt regroupe progressivement :
 
 ---
 
-## Projet mis en avant
+## Projets mis en avant
 
 ### Oracle Materialized View Space Reclaimer
 
@@ -63,11 +63,32 @@ Les validations réalisées sur des copies de test ont permis de récupérer de 
 ➡️ **[Voir le projet complet](materialized-views/space-reclaimer/README_FR.md)**  
 ➡️ **[English version](materialized-views/space-reclaimer/README.md)**
 
+### Linux VNC Privileged GUI Toolkit
+
+Bibliothèque Bash générique permettant à un administrateur connecté avec un compte nominatif de basculer vers `root`, `oracle` ou `grid`, puis d’utiliser ce même contexte pour lancer des applications graphiques depuis une session VNC/GNOME.
+
+Le projet met notamment en œuvre :
+
+- une bascule contrôlée avec `sudo` ;
+- un menu d’administration `adminenv` ;
+- un état de session partagé avec `adminenv.current` ;
+- un verrou non bloquant avec `flock` ;
+- une gestion correcte du descripteur de verrou avec `9>&-` ;
+- une autorisation X11 ciblée avec `xhost +SI:localuser` ;
+- une session D-Bus isolée avec `dbus-run-session` ;
+- le lancement de Nautilus et Gedit sous l’identité technique sélectionnée ;
+- des raccourcis GNOME et un mécanisme d’autostart.
+
+La version publiée est volontairement générique et ne contient aucun nom d’infrastructure interne, adresse IP, identifiant métier ou information d’authentification.
+
+➡️ **[Voir le projet complet](linux/vnc-privileged-gui-toolkit/README_FR.md)**  
+➡️ **[English version](linux/vnc-privileged-gui-toolkit/README.md)**
+
 ---
 
 ## Structure du dépôt
 
-Le dépôt est organisé progressivement par domaine. Le projet `materialized-views/space-reclaimer` est le premier module complet publié avec documentation, scripts, architecture, dépannage et résultats anonymisés.
+Le dépôt est organisé progressivement par domaine. Les modules publiés sont documentés avec leurs scripts, architecture et notes de dépannage.
 
 ```text
 oracle-dba-toolkit/
@@ -86,11 +107,21 @@ oracle-dba-toolkit/
 │           ├── 04_adm_send_mv_compact_report.sql
 │           ├── 05_scheduler_job.sql
 │           └── 06_reporting_queries.sql
+├── linux/
+│   └── vnc-privileged-gui-toolkit/
+│       ├── README.md
+│       ├── README_FR.md
+│       ├── architecture.md
+│       ├── installation.md
+│       ├── troubleshooting.md
+│       ├── config/
+│       ├── desktop/
+│       ├── diagrams/
+│       └── scripts/
 ├── rman/                  # prévu / enrichissement progressif
 ├── performance/           # prévu / enrichissement progressif
 ├── rac/                   # prévu / enrichissement progressif
 ├── weblogic/              # prévu / enrichissement progressif
-├── linux/                 # prévu / enrichissement progressif
 └── README.md
 ```
 
@@ -139,6 +170,9 @@ oracle-dba-toolkit/
 - Contrôle espace disque
 - Vérification réseau / DNS
 - Automatisation Bash
+- Comptes nominatifs, `sudo`, VNC/GNOME et lancement graphique privilégié
+
+➡️ **[Linux VNC Privileged GUI Toolkit](linux/vnc-privileged-gui-toolkit/README_FR.md)**
 
 ---
 
