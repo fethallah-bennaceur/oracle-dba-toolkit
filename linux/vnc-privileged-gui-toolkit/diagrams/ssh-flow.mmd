@@ -1,0 +1,5 @@
+flowchart TD
+    A[Admin workstation] -->|Nominative account + SSH key| B[Linux server]
+    B -->|sudo -i| C[root]
+    B -->|sudo -iu oracle| D[oracle]
+    B -->|sudo -iu grid| E[grid]
