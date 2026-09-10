@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Privileged Environment
+Exec=/usr/local/bin/start-adminenv
+Terminal=false
+X-GNOME-Autostart-enabled=true
