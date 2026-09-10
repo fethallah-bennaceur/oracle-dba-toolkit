@@ -1,0 +1,8 @@
+flowchart LR
+    A[adminenv] --> B[adminenv.current]
+    A --> C[adminenv.lock]
+    D[start-adminenv] --> A
+    E[Files launcher] --> F[open-files-current]
+    G[Editor launcher] --> H[open-editor-current]
+    F --> B
+    H --> B
