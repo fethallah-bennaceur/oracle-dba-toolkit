@@ -1,0 +1,6 @@
+# Example only.
+# Validate with visudo -c.
+
+%linux-admins  ALL=(root)   ALL
+%oracle-admins ALL=(oracle) ALL
+%grid-admins   ALL=(grid)   ALL
