@@ -40,33 +40,57 @@ Ce dépôt regroupe progressivement :
 
 ---
 
-## Structure proposée
+## Projet mis en avant
+
+### Oracle Materialized View Space Reclaimer
+
+Solution PL/SQL de détection et de récupération d’espace pour les vues matérialisées Oracle dont le segment est devenu très supérieur au volume logique des données.
+
+Le projet met en œuvre :
+
+- une présélection dynamique à partir de `DBA_MVIEWS`, `DBA_TABLES` et `DBA_SEGMENTS` ;
+- une comparaison entre allocation physique et volume logique estimé ;
+- une collecte de statistiques fraîches avant toute décision ;
+- un contrôle de l’historique des refresh et du mode `ATOMIC_REFRESH` ;
+- un refresh `COMPLETE` contrôlé avec `atomic_refresh => FALSE` ;
+- une mesure TABLE + INDEX avant/après et du volume réellement récupéré ;
+- une journalisation par `RUN_ID` ;
+- un rapport HTML ;
+- une automatisation via `DBMS_SCHEDULER`.
+
+Les validations réalisées sur des copies de test ont permis de récupérer de quelques centaines de Mo à plusieurs Go sur certaines vues matérialisées, avec mesure systématique avant/après.
+
+➡️ **[Voir le projet complet](materialized-views/space-reclaimer/README_FR.md)**  
+➡️ **[English version](materialized-views/space-reclaimer/README.md)**
+
+---
+
+## Structure du dépôt
+
+Le dépôt est organisé progressivement par domaine. Le projet `materialized-views/space-reclaimer` est le premier module complet publié avec documentation, scripts, architecture, dépannage et résultats anonymisés.
 
 ```text
 oracle-dba-toolkit/
-├── rman/
-│   ├── backup_database.sh
-│   ├── backup_archivelog.sh
-│   └── check_rman_status.sql
-├── performance/
-│   ├── top_sql.sql
-│   ├── temp_usage.sql
-│   ├── pga_usage.sql
-│   ├── blocking_sessions.sql
-│   └── awr_ash_notes.md
-├── rac/
-│   ├── crs_status.sh
-│   ├── services_status.sh
-│   ├── instance_status.sql
-│   └── rac_diagnostic_notes.md
-├── weblogic/
-│   ├── datasource_check.md
-│   ├── forms_reports_notes.md
-│   └── weblogic_logs_check.md
-├── linux/
-│   ├── disk_usage_check.sh
-│   ├── memory_cpu_check.sh
-│   └── network_dns_check.sh
+├── materialized-views/
+│   └── space-reclaimer/
+│       ├── README.md
+│       ├── README_FR.md
+│       ├── architecture.md
+│       ├── troubleshooting.md
+│       ├── examples/
+│       │   └── sample-results.md
+│       └── sql/
+│           ├── 01_create_repository_objects.sql
+│           ├── 02_required_privileges.sql
+│           ├── 03_adm_compact_mv_candidates.sql
+│           ├── 04_adm_send_mv_compact_report.sql
+│           ├── 05_scheduler_job.sql
+│           └── 06_reporting_queries.sql
+├── rman/                  # prévu / enrichissement progressif
+├── performance/           # prévu / enrichissement progressif
+├── rac/                   # prévu / enrichissement progressif
+├── weblogic/              # prévu / enrichissement progressif
+├── linux/                 # prévu / enrichissement progressif
 └── README.md
 ```
 
@@ -84,6 +108,7 @@ oracle-dba-toolkit/
 - Top SQL
 - Analyse AWR / ASH
 - Erreurs ORA fréquentes
+- Vues matérialisées : diagnostic, refresh, espace et automatisation
 
 ### Oracle RAC
 
